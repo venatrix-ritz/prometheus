@@ -31,7 +31,7 @@ public abstract class ScreenEffectRendererMixin {
    * @param original the {@link Operation} for the wrapped method.
    * @return {@link TextureAtlasSprite} to assign.
    */
-  @WrapOperation(method = "renderScreenEffect", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/sprite/SpriteGetter;get(Lnet/minecraft/client/resources/model/sprite/SpriteId;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;"))
+  @WrapOperation(method = "submit", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/sprite/SpriteGetter;get(Lnet/minecraft/client/resources/model/sprite/SpriteId;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;"))
   private TextureAtlasSprite wrapSprite(SpriteGetter instance, SpriteId material, Operation<TextureAtlasSprite> original) {
     Identifier fireType = ((FireTyped) Objects.requireNonNull(Minecraft.getInstance().player)).getFireType();
     if (FireManager.isRegisteredType(fireType)) {
